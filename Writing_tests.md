@@ -112,9 +112,35 @@ from playwright.sync_api import Page
 
 def test_example_test(page: Page):
   pass
-  # "page" belongs to an isolated BrowserContext, created for this specific test.
+  #страница относится к изолированному контексту браузера, созданному специально для этого теста
 
 def test_another_test(page: Page):
   pass
-  # "page" in this second test is completely isolated from the first test.
+  #страница в этом втором тесте полностью изолирована от первого теста
+```
+
+**Использованеи фикстур**
+
+вы можете использовать их для выполнения кода до или после тестов а также для обмена данными между тестами function Прибор с ограниченной областью действия например с autouse ведет себя как перед каждым после каждого. И module прибор с ограниченной областью действия с autouse ведет себя как beforeAll / afterAll, который выполняется перед всеми и после всех тестов.
+
+традиционный пример из текста:
+
+```python
+import pytest
+from playwright.sync_api import Page, expect
+
+@pytest.fixture(scope="function", autouse=True)
+def before_each_after_each(page: Page):
+    
+    print("before the test runs")
+
+    # Go to the starting url before each test.
+    page.goto("https://playwright.dev/")
+    yield
+    
+    print("after the test runs")
+
+def test_main_navigation(page: Page):
+    # Assertions use the expect API.
+    expect(page).to_have_url("https://playwright.dev/")
 ```
