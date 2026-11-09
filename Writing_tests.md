@@ -68,3 +68,34 @@ Playwriter сам будет ждать пока предмет станет д�
 | locator.press() | нажми на клавишу |
 | locator.set_input_files() | выбрать файлы для загрузки |
 | locator.select_option() | выбрать опцию из раскрытого списка |
+
+
+**Утверждения**
+
+Playwriter включает в себя утверждения которые будут ждать пока главное условие не будет выполнено. Нужны они для чистоты тестов они позволяют сделать их. более устойчивыми и стабильными. 
+
+пример где код будет ждать пока страница не получит заголовок содержащий подстройку Playwriter 
+
+```python
+import re
+from playwright.sync_api import expect
+
+expect(page).to_have_title(re.compile("Playwright"))
+```
+
+
+
+**вот таблица с самыми популярными асинхронными утверждениями:**
+
+| Действие | Описание |
+| :--- | :---: |
+| expect(locator).to_be_checked() | Флажок установлен |
+| expect(locator).to_be_enabled() | Элемент управления включен |
+| expect(locator).to_be_visible() | Элемент виден |
+| expect(locator).to_contain_text() | 	Элемент содержит текст |
+| expect(locator).to_have_attribute() | Элемент имеет атрибут |
+| expect(locator).to_have_count() | Список элементов имеет заданную длину |
+| expect(locator).to_have_text() | Элемент соответствует тексту |
+| expect(locator).to_have_value() | Входной элемент имеет значение |
+| expect(page).to_have_title() | Страница имеет заголовок |
+| expect(page).to_have_url() | Страница имеет URL |
