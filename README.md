@@ -53,4 +53,13 @@ def test_get_started_link(page: Page):
   uv add --upgrade pytest-playwright playwright
 ```
 
+## СИСТЕМНЫЕ ТРЕБОВАНИЯ:
+
+Python 3.8 или выше.
+Windows 11+, Windows Server 2019+ или подсистема Windows для Linux (WSL).
+macOS 14 (Sonoma) или более поздняя версия.
+Debian 12 / 13, Ubuntu 22.04 / 24.04 / 26.04 (x86-64 или arm64).
+
+
+
 
