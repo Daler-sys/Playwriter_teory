@@ -99,3 +99,22 @@ expect(page).to_have_title(re.compile("Playwright"))
 | expect(locator).to_have_value() | Входной элемент имеет значение |
 | expect(page).to_have_title() | Страница имеет заголовок |
 | expect(page).to_have_url() | Страница имеет URL |
+
+
+**Изоляция тестов**
+
+плагин библиотеки основан на концепции текстовых фикстур таких как встроенная фикстура страницы, которая передается в тест. Страницы изолируются между тестами с помощью контекста браузера это как создание нового профиля. каждый тест выполняется в новой среде даже если несколько тестов выполняются в 1 браузере
+
+пример из кода 
+
+```python
+from playwright.sync_api import Page
+
+def test_example_test(page: Page):
+  pass
+  # "page" belongs to an isolated BrowserContext, created for this specific test.
+
+def test_another_test(page: Page):
+  pass
+  # "page" in this second test is completely isolated from the first test.
+```
