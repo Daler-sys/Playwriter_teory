@@ -48,8 +48,9 @@ def test_get_started_link(page: Page):
 
 > **Примечание:** По умолчанию все выполняется в Chromium. но это можно настроить через командную строку
 
-> **обновление:** обновить можно через команду: uv add --upgrade pytest-playwright playwright
-
-
+обновление: обновить можно через команду: 
+```bash
+  uv add --upgrade pytest-playwright playwright
+```
 
 
