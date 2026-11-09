@@ -46,4 +46,10 @@ def test_get_started_link(page: Page):
     expect(page.get_by_role("heading", name="Installation")).to_be_visible()
 ```
 
-> **Примечание:** По умолчанию все выполняется в Chromium.
+> **Примечание:** По умолчанию все выполняется в Chromium. но это можно настроить через командную строку
+
+> **обновление:** обновить можно через команду: uv add --upgrade pytest-playwright playwright
+
+
+
+
