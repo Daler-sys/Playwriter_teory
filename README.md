@@ -1,28 +1,32 @@
-# Playwriter_teory
-teory about playwriter
+# Playwright Theory
 
-# БЛОК №1: УСТОНОВКА
-чтобы установить playwriter нужно ввести в терминал следующие команды:
- pip:
-  “””
+Theory about Playwright.
+
+## БЛОК №1: УСТАНОВКА
+
+Чтобы установить Playwright, нужно ввести в терминал следующие команды, в зависимости от вашего менеджера пакетов:
+
+* **pip**:
+  ```bash
   pip install pytest-playwright
-  “””
-  poetry:
-  “””
+  ```
+* **poetry**:
+  ```bash
   poetry add pytest-playwright
-  “””
-  uv:
-  ‘’’
+  ```
+* **uv**:
+  ```bash
   uv add pytest-playwright
-  ‘’’
+  ```
 
+После установки надо скачать все браузеры командой:
+```bash
+playwright install
+```
 
-  после установки надо скачать все браузеры командой:
-  
- playwright install
+Потом надо добавить пример кода **ОБЯЗАТЕЛЬНО С ПРИСТАВКОЙ `test_….py`** (например, `test_example.py`):
 
- потом надо добавить пример кода ОБЯЗАТЕЛЬНО С ПРИСТАВКОЙ test_….py(example test_example.py):
-“””
+```python
 import re
 from playwright.sync_api import Page, expect
 
@@ -40,6 +44,6 @@ def test_get_started_link(page: Page):
 
     # Expects page to have a heading with the name of Installation.
     expect(page.get_by_role("heading", name="Installation")).to_be_visible()
-“””
+```
 
-по умолчанию все выполняется в chromium 
+> **Примечание:** По умолчанию все выполняется в Chromium.
