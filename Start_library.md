@@ -88,3 +88,45 @@ page.screenshot(path="example.png")
 browser.close()
 playwright.stop()
 ```
+
+### Pyinstaller
+
+Вы можете использовать Playwright с Pyinstaller для создания автономных исполняемых файлов.
+
+```python
+    from playwright.sync_api import sync_playwright
+
+with sync_playwright() as p:
+    browser = p.chromium.launch()
+    page = browser.new_page()
+    page.goto("https://playwright.dev/")
+    page.screenshot(path="example.png")
+    browser.close()
+```
+
+Если вы хотите включить браузер в список исполняемых файлов:
+
+```bash
+PLAYWRIGHT_BROWSERS_PATH=0 playwright install chromium
+pyinstaller -F main.py
+```
+
+### Известные проблемы
+
+**time.sleep() приводят к устаревшему состоянию**
+
+Скорее всего, вам не придется ждать вручную, поскольку в Playwright есть автоматическое ожидание. Если вы все еще полагаетесь на него, вам следует использовать page.wait_for_timeout(5000) вместо time.sleep(5) и лучше вообще не дожидаться истечения таймаута, но иногда это полезно для отладки. 
+
+**несовместим с SelectorEventLoop из asyncio в Windows**
+
+Playwright запускает драйвер в подпроцессе, поэтому для него требуется ProactorEventLoop из asyncio в Windows, поскольку SelectorEventLoop не поддерживает асинхронные подпроцессы.
+
+В Windows на Python 3.7 Playwright устанавливает цикл обработки событий по умолчанию на ProactorEventLoop — так же, как в Python 3.8+.
+
+**Многопоточность**
+
+API Playwright не является потокобезопасным. Если вы используете Playwright в многопоточной среде, вам следует создавать отдельный экземпляр Playwright для каждого потока.
+
+**отмена асинхронных задач**
+
+Отмена задачи, в которой выполняется вызов Playwright, не поддерживается и приводит к неопределенному поведению. Если операция должна выполняться дольше, чем вызвавший ее код, запустите ее в отдельной задаче и защитите с помощью asyncio.shield().
