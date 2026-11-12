@@ -46,6 +46,27 @@ Playwright включает в себя утверждения с автомат
 
 | Утверждение | Описание |
 | --- | --- |
-| Строка 1, ячейка 1 | Строка 1, ячейка 2 |
-| Строка 2, ячейка 1 | Строка 2, ячейка 2 |
+| expect(locator).to_be_attached() | элемент прикреплен |
+| expect(locator).to_be_checked() | флажок установлен |
+| expect(locator).to_be_disabled() | элемент отключен |
+| expect(locator).to_be_editable() | элемент доступен для редактирования |
+| expect(locator).to_be_empty() | контейнер пуст |
+| expect(locator).to_be_enabled()  | Элемент включен |
+| expect(locator).to_be_focused() | Элемент сфокусирован |
+| expect(locator).to_be_hidden() | Элемент не виден |
+| expect(locator).to_be_in_viewport() | Элемент пересекает область просмотра |
+| expect(locator).to_be_visible() | Элемент виден |
+| expect(locator).to_contain_text() | Элемент содержит текст |
+| expect(locator).to_have_attribute() | Элемент имеет атрибут DÓM |
+| expect(locator).to_have_class() | Элемент имеет свойства класса |
+| expect(locator).to_have_count() | Список содержит точное количество дочерних элементов |
+| expect(locator).to_have_css() | Элемент имеет свойство CSS |
+| expect(locator).to_have_id() | Элемент имеет индификатор |
+| expect(locator).to_have_js_property() | Элемент имеет свойства JS |
+| expect(locator).to_have_text() | Элемент соответствует тексту |
+| expect(locator).to_have_value() | Выходные данные имеют значение |
+| expect(locator).to_have_values() | Для выбора выбраны параметры |
+| expect(page).to_have_title() | У страницы есть заголовок |
+| expect(page).to_have_url() | страница имеет URL |
+| expect(response).to_be_ok() | ответ имеет статус ОК |
 
