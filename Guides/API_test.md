@@ -112,3 +112,4 @@ def test_should_create_feature_request(api_request_context: APIRequestContext) -
     assert issue
     assert issue["body"] == "Feature description"
 ```
+
